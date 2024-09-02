@@ -1,0 +1,24 @@
+body {
+   background-color: #212121;
+   color: #fff;
+   font-family: sans-serif;
+}
+
+.center {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+}
+
+#clock {
+   border: none;
+   border-radius: 10px;
+   background-color: orange;
+   display: flex ;
+   justify-content: center;
+   align-items: center;
+   width: 100px;
+   height: 40px;
+}
