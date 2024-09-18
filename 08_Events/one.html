@@ -1,0 +1,26 @@
+<!-- addEventListener is the best way to add event insted of onclick and onchange-->
+<script>
+   // document.getElementById('owl').addEventListener('click', function () { }, false)
+   // false is the default value
+   // attach event listener to an element can also be used instead of addEventListener but it is not recommended
+   // jquery is the best way to add event insted of onclick and onchange but is old and not recommended
+   document.getElementById('images').addEventListener('click', function (e) {
+      console.log("clicked inside the ul")
+   }, false)
+   document.getElementById('owl').addEventListener('click', function (e) {
+      console.log("owl clicked")
+      e.stopPropagation()// stops the bubble from propagating up
+   }, false)
+   // here owl image is inside the ul so on clicking on owl image will first show owl clicked then it will show clicked inside the ul this is called event propagation or bubbling
+   // if we write true instead of false it will show clicked inside the ul first and then owl clicked this is called capturing phase in eveent propagation
+   document.querySelector('#images').addEventListener('click', function (e) {
+      console.log(e.target.tagName);
+      if (e.target.tagName === 'IMG') {
+         console.log(e.target.id);
+         let removeIt = e.target.parentNode
+         removeIt.remove()
+      }
+   })
+   // type, timestamp, screenX, screenY,clientX,clientY,ctrlKey,altKey,shiftKey,defaultPrevented,target,toElement,srcElement,currentTarget,keyCode
+
+</script>

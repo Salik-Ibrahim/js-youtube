@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <style>
+      button {
+         width: 120px;
+         height: 60px;
+         border: none;
+         background-color: aqua;
+         border-radius: 10px/20px;
+      }
+      img{
+         border-radius: 50px;
+      }
+   </style>
+</head>
+
+<body style="background-color: #212121;color: #fff;">
+   <button>Get info</button>
+   <div class="infoContainer">
+
+   </div>
+</body>
+<script>
+   const requestUrl = 'https://api.github.com/users/hiteshchoudhary';
+   const xhr = new XMLHttpRequest();
+   xhr.open('GET', requestUrl);
+   // console.log("HERE");
+   const btn = document.querySelector('button');
+   btn.addEventListener('click', function () {
+      xhr.onreadystatechange = function () {
+         console.log(this.readyState);
+         if (this.readyState === 4) {
+            const data = JSON.parse(this.responseText);
+            const followers = data.followers;
+            const name = data.name;
+            const photo = data.avatar_url;
+            const div = document.querySelector('.infoContainer');
+            div.innerHTML = `<h1>${name}</h1><h1>${followers}</h1><img src="${photo}"/>`;
+            // console.log(this.responseText);// can also write xhr instead of this
+         }
+      };
+      xhr.send();
+   })
+</script>
+
+</html>
